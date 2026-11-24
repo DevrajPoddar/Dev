@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="theme-color" content="#04040a" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content="Radius Fight" />
+		<title>Radius Fight // Overdrive</title>
+		<link rel="shortcut icon" id="favicon" />
+		<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+		<link rel="manifest" href="manifest.json" />
+
+		<style>
+			html, body {
+				background: #04040a;
+				height: 100%;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				overscroll-behavior: none;
+				touch-action: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+				-webkit-touch-callout: none;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-text-size-adjust: 100%;
+			}
+
+			/* pin the page so iOS Safari can't rubber-band */
+			body {
+				position: fixed;
+				inset: 0;
+			}
+
+			#wrap {
+				background: #222;
+				box-shadow: inset 0 0 0 1px #404040, 0 0 0 1px #000;
+				left: 50%;
+				opacity: 0;
+				padding: 10px;
+				position: absolute;
+				top: 50%;
+				transform-origin: center center;
+				transition: opacity 1.5s;
+			}
+
+			.loaded #wrap {
+				opacity: 1;
+			}
+
+			#wrap-inner {
+				background: #000;
+				overflow: hidden;
+				position: relative;
+			}
+
+			canvas {
+				cursor: crosshair;
+				display: block;
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+
+			/* --- rotate-device hint (portrait on touch devices) --- */
+			#rotate-hint {
+				display: none;
+				position: fixed;
+				left: 50%;
+				top: 16px;
+				transform: translateX(-50%);
+				color: rgba(255, 255, 255, 0.92);
+				font: 600 12px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+				letter-spacing: 0.1em;
+				text-align: center;
+				pointer-events: none;
+				z-index: 10;
+				text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+			}
+
+			#rotate-hint .phone {
+				width: 22px;
+				height: 40px;
+				border: 2px solid #fff;
+				border-radius: 4px;
+				margin: 0 auto 8px;
+				animation: rr-rotate 1.8s ease-in-out infinite;
+			}
+
+			@keyframes rr-rotate {
+				0%, 20% { transform: rotate(0deg); }
+				55%, 100% { transform: rotate(90deg); }
+			}
+		</style>
+	</head>
+	<body>
+		<div id="rotate-hint">
+			<div class="phone"></div>
+			ROTATE DEVICE
+		</div>
+		<div id="wrap">
+			<div id="wrap-inner">
+				<canvas id="cbg1"></canvas>
+				<canvas id="cbg2"></canvas>
+				<canvas id="cbg3"></canvas>
+				<canvas id="cbg4"></canvas>
+				<canvas id="cmg"></canvas>
+				<canvas id="cfg"></canvas>
+			</div>
+		</div>
+		<script>var $ = {};</script>
+		<script src="js/jsfxr.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/storage.js"></script>
+		<script src="js/definitions.js"></script>
+		<script src="js/audio.js"></script>
+		<script src="js/text.js"></script>
+		<script src="js/hero.js"></script>
+		<script src="js/enemy.js"></script>
+		<script src="js/bullet.js"></script>
+		<script src="js/explosion.js"></script>
+		<script src="js/powerup.js"></script>
+		<script src="js/particle.js"></script>
+		<script src="js/particleemitter.js"></script>
+		<script src="js/textpop.js"></script>
+		<script src="js/levelpop.js"></script>
+		<script src="js/button.js"></script>
+		<script src="js/game.js"></script>
+		<!-- Overdrive enhancement modules (loaded after game.js so enhanced.js can wrap it) -->
+		<script src="js/upgrades.js"></script>
+		<script src="js/enemybullet.js"></script>
+		<script src="js/combo.js"></script>
+		<script src="js/boss.js"></script>
+		<script src="js/touch.js"></script>
+		<script src="js/enhanced.js"></script>
+	</body>
+</html>
